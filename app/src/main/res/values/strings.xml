@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CoordinatesApp</string>
+    <string name="button_start_updates">Start location updates</string>
+    <string name="toast_saving">Saving update…</string>
+    <string name="toast_saved">Location saved</string>
+    <string name="toast_error">Sorry, an error occurred</string>
+    <string name="toast_permission_rationale">Permission is necessary for core functionality</string>
+</resources>

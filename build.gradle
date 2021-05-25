@@ -1,0 +1,67 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    ext {
+        jvmTarget = "1.8"
+        toolsVersion = "4.2.1"
+
+        kotlinVersion = '1.5.0'
+        ktxVersion = '1.5.0'
+        lifecycleKtxVersion = "2.3.1"
+        liveDataKtxVersion = "2.3.1"
+        lifecycleViewModelKtxVersion = "2.3.1"
+        androidCoroutinesVersion = '1.5.0'
+
+        gradleVersion = '4.0.2'
+
+        appCompatVersion = '1.3.0'
+        recyclerVersion = '1.2.0'
+        materialVersion = '1.3.0'
+        constraintLayoutVersion = '2.0.4'
+
+        databindingVersion = "3.3.2"
+        roomVersion = '2.3.0'
+        gsonVersion = '2.8.6'
+        lifecycleVersion = '2.3.1'
+
+        daggerVersion = '2.35.1'
+
+        gmsLocationVersion = "18.0.0"
+
+        mockkVersion = '1.11.0'
+        mockWebServerVersion = "2.7.5"
+
+        jUnitVersion = '4.13.2'
+        extJUnitVersion = "1.1.2"
+        coreTestingVersion = "2.1.0"
+        expressoCoreVersion = "3.3.0"
+
+        ktlintVersion = "0.29.0"
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:$toolsVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    apply from: "$rootDir/ktlint.gradle"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
