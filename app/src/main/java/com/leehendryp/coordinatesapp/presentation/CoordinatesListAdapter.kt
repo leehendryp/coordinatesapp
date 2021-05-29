@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.leehendryp.coordinatesapp.domain.Coordinates
+import com.leehendryp.coordinatesapp.data.local.Coordinates
 import com.leehendryp.coordinatesapp.databinding.CoordinatesListItemBinding
 
 class CoordinatesListAdapter :
@@ -32,7 +32,7 @@ class CoordinatesListAdapter :
 
     class CoordinateListDiffCallback : DiffUtil.ItemCallback<Coordinates>() {
         override fun areItemsTheSame(oldItem: Coordinates, newItem: Coordinates): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Coordinates, newItem: Coordinates): Boolean {

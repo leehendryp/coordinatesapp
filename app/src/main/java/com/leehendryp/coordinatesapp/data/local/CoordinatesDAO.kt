@@ -8,8 +8,8 @@ import androidx.room.Query
 @Dao
 interface CoordinatesDAO {
     @Query("SELECT * FROM coord_table")
-    fun getAll(): List<RoomCoordinates>
+    suspend fun getAll(): List<Coordinates>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(roomCoordinates: RoomCoordinates)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(coordinates: Coordinates)
 }

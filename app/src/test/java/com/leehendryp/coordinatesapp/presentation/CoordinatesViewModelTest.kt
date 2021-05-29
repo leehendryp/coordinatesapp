@@ -3,7 +3,6 @@ package com.leehendryp.coordinatesapp.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.leehendryp.coordinatesapp.core.MainCoroutineRule
-import com.leehendryp.coordinatesapp.domain.Coordinates
 import com.leehendryp.coordinatesapp.domain.CoordinatesRepository
 import io.mockk.coEvery
 import io.mockk.spyk

@@ -1,11 +1,12 @@
 package com.leehendryp.coordinatesapp.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations.switchMap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.leehendryp.coordinatesapp.domain.Coordinates
+import com.leehendryp.coordinatesapp.data.local.Coordinates
 import com.leehendryp.coordinatesapp.domain.CoordinatesRepository
 import com.leehendryp.coordinatesapp.presentation.Action.GetUpdatedList
 import com.leehendryp.coordinatesapp.presentation.Action.SaveUpdate
@@ -36,20 +37,24 @@ class CoordinatesViewModel @Inject constructor(
     }
 
     private suspend fun MutableLiveData<State>.save(coordinates: Coordinates) {
-        value = State.Saving
+        postValue(State.Saving)
         with(repo.save(coordinates)) {
-            value = if (this) State.NewLocationSaved else State.Error
+            postValue(
+                if (this) State.NewLocationSaved else State.Error
+            )
         }
         dispatch(GetUpdatedList)
     }
 
     private suspend fun MutableLiveData<State>.getUpdatedList() {
-        value = State.Retrieving
+        postValue(State.Retrieving)
 
         try {
-            with(repo.getCoordinateEntries()) { State.UpdatedList(this) }
+            with(repo.getCoordinateEntries()) {
+                postValue(State.UpdatedList(this))
+            }
         } catch (throwable: Throwable) {
-            State.Error
+            postValue(State.Error)
         }
     }
 }

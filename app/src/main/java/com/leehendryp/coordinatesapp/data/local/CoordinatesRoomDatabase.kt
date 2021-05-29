@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = [RoomCoordinates::class], version = 1, exportSchema = false)
+@Database(entities = [Coordinates::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class CoordinatesRoomDatabase : RoomDatabase() {
 

@@ -3,6 +3,7 @@ package com.leehendryp.coordinatesapp.presentation
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.icu.util.TimeUnit
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper
@@ -22,9 +23,12 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 import com.leehendryp.coordinatesapp.CoordinatesApp
 import com.leehendryp.coordinatesapp.R
+import com.leehendryp.coordinatesapp.data.local.Coordinates
 import com.leehendryp.coordinatesapp.databinding.ActivityMainBinding
-import com.leehendryp.coordinatesapp.domain.Coordinates
-import java.util.concurrent.TimeUnit.SECONDS
+import java.time.Instant
+import java.time.format.DateTimeFormatter
+import java.util.*
+import java.util.concurrent.TimeUnit.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -129,7 +133,13 @@ class MainActivity : AppCompatActivity() {
             ).show()
 
             viewModel.dispatch(
-                Action.SaveUpdate(Coordinates(location.latitude, location.longitude))
+                Action.SaveUpdate(
+                    Coordinates(
+                        timeStamp = Date().toString(),
+                        latitude = location.latitude,
+                        longitude = location.longitude
+                    )
+                )
             )
         }
     }

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="coordinates"
-            type="com.leehendryp.coordinatesapp.domain.Coordinates" />
+            type="com.leehendryp.coordinatesapp.data.local.Coordinates" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

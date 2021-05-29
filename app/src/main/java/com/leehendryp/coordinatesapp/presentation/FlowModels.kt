@@ -1,6 +1,6 @@
 package com.leehendryp.coordinatesapp.presentation
 
-import com.leehendryp.coordinatesapp.domain.Coordinates
+import com.leehendryp.coordinatesapp.data.local.Coordinates
 
 sealed class Action {
     data class SaveUpdate(val coordinates: Coordinates) : Action()
