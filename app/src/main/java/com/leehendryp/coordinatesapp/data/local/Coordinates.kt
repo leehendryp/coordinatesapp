@@ -9,7 +9,7 @@ import java.util.*
 @Entity(tableName = "coord_table")
 data class Coordinates(
     @PrimaryKey(autoGenerate = true) val id: Int? = 0,
-    @NonNull @ColumnInfo(name = "timeStamp") val timeStamp: String,
+    @NonNull @ColumnInfo(name = "date") val date: String,
     @NonNull @ColumnInfo(name = "latitude") val latitude: Double,
     @NonNull @ColumnInfo(name = "longitude") val longitude: Double,
 ) {
